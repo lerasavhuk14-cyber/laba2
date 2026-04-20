@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -61,7 +62,7 @@ fun AddItemDialog(
                     onValueChange = { name = it },
                     label = { Text(stringResource(R.string.item_name)) },
                     singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().testTag("field_item_name"),
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Sentences
                     ),
@@ -117,7 +118,10 @@ fun AddItemDialog(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End)
                 ) {
-                    TextButton(onClick = onDismiss) {
+                    TextButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.testTag("btn_cancel")
+                    ) {
                         Text(stringResource(R.string.cancel))
                     }
                     Button(
@@ -127,7 +131,8 @@ fun AddItemDialog(
                             }
                         },
                         enabled = name.isNotBlank(),
-                        shape = MaterialTheme.shapes.medium
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.testTag("btn_confirm_add")
                     ) {
                         Icon(
                             Icons.Rounded.Add,

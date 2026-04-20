@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -63,7 +64,8 @@ fun ShoppingListScreen(viewModel: ShoppingViewModel = viewModel()) {
                     Text(
                         text = stringResource(R.string.title),
                         style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.testTag("screen_title")
                     )
                 },
                 actions = {
@@ -94,7 +96,8 @@ fun ShoppingListScreen(viewModel: ShoppingViewModel = viewModel()) {
                 text = { Text(stringResource(R.string.add_item)) },
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary,
-                shape = MaterialTheme.shapes.extraLarge
+                shape = MaterialTheme.shapes.extraLarge,
+                modifier = Modifier.testTag("fab_add_item")
             )
         }
     ) { paddingValues ->
@@ -260,7 +263,8 @@ private fun StatsCard(
                     text = "$purchased / $total",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.testTag("stats_counter")
                 )
             }
 

@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -155,7 +156,7 @@ fun ShoppingItemCard(
                     }
                     IconButton(
                         onClick = { showDeleteConfirm = true },
-                        modifier = Modifier.size(36.dp)
+                        modifier = Modifier.size(36.dp).testTag("btn_delete_${item.id}")
                     ) {
                         Icon(
                             Icons.Rounded.Delete,
@@ -192,7 +193,8 @@ fun ShoppingItemCard(
                             containerColor = MaterialTheme.colorScheme.error
                         ),
                         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp),
-                        shape = MaterialTheme.shapes.small
+                        shape = MaterialTheme.shapes.small,
+                        modifier = Modifier.testTag("btn_confirm_delete")
                     ) {
                         Icon(Icons.Rounded.Delete, contentDescription = null, modifier = Modifier.size(14.dp))
                         Spacer(Modifier.width(4.dp))
