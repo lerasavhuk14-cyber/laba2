@@ -90,7 +90,8 @@ fun ShoppingItemCard(
                     colors = CheckboxDefaults.colors(
                         checkedColor = MaterialTheme.colorScheme.primary,
                         uncheckedColor = MaterialTheme.colorScheme.outline
-                    )
+                    ),
+                    modifier = Modifier.testTag("checkbox_${item.name}")
                 )
             }
 
